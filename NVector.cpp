@@ -169,9 +169,13 @@ NVector& NVector::operator+=(const NVector& rhs) {
 	return *this;
 }
 
-NVector operator+(NVector lhs, const NVector& rhs) {
-	lhs += rhs;
-	return lhs;
+NVector operator+(const NVector& lhs, const NVector& rhs) {
+	if (lhs.GetSize() != rhs.GetSize()) {
+		throw std::logic_error("Vectors must have the same size!");
+	}
+	NVector result(lhs);
+	result += rhs;
+	return result;
 }
 
 NVector& NVector::operator*=(const float& num) noexcept {
@@ -194,19 +198,20 @@ NVector& NVector::operator/=(const float& num) noexcept {
 	return *this;
 }
 
+
 NVector operator/(NVector lhs, const float& num){
 	lhs /= num;
 	return lhs;
 }
 
-float NVector::operator*(const NVector& rhs)
+float operator*(const NVector& lhs, const NVector& rhs)
 {
-	if (_size != rhs._size) {
+	if (lhs.GetSize() != rhs.GetSize()) {
 		throw std::logic_error("Vectors must have the same size!");
 	}
 	float scalar = 0;
-	for (size_t i = 0; i < _size; ++i) {
-		scalar += _data[i] * rhs[i];
+	for (size_t i = 0; i < lhs.GetSize(); ++i) {
+		scalar += lhs[i] * rhs[i];
 	}
 	return scalar;
 }

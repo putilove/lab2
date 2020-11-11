@@ -19,7 +19,6 @@ public:
 	NVector& operator+=(const NVector& rhs);						// Унарное сложение векторов
 	NVector& operator*=(const float& num) noexcept;					// Унарное умножение на скаляр
 	NVector& operator/=(const float& num) noexcept;					// Деление на скаляр
-	float operator*(const NVector& rhs);							// Перегрузка для скалярного произведения
 	void Swap(NVector& rhs) noexcept;								// Кастомный свап
 	float& operator[](size_t index);								// Доступ по индексу с возможностью редактирования
 	float operator[](size_t index) const;							// Доступ по индексу (просмотр)
@@ -28,8 +27,9 @@ public:
 };
 
 NVector& FillVector(NVector& v) noexcept;
-NVector operator+(NVector lhs, const NVector& rhs);
+NVector operator+(const NVector& lhs, const NVector& rhs);
 NVector operator*(NVector lhs, const float& num);
 NVector operator/(NVector lhs, const float& num);
+float operator*(const NVector& lhs,const NVector& rhs);
 std::ostream& operator<< (std::ostream& out, const NVector& v);
 void Print(const NVector& v);
