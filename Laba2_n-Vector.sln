@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Laba2_n-Vector", "Laba2_n-Vector.vcxproj", "{3C602BC6-8416-42A9-A0F7-EC560DE7D843}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C602BC6-8416-42A9-A0F7-EC560DE7D843}.Debug|x64.ActiveCfg = Debug|x64
+		{3C602BC6-8416-42A9-A0F7-EC560DE7D843}.Debug|x64.Build.0 = Debug|x64
+		{3C602BC6-8416-42A9-A0F7-EC560DE7D843}.Debug|x86.ActiveCfg = Debug|Win32
+		{3C602BC6-8416-42A9-A0F7-EC560DE7D843}.Debug|x86.Build.0 = Debug|Win32
+		{3C602BC6-8416-42A9-A0F7-EC560DE7D843}.Release|x64.ActiveCfg = Release|x64
+		{3C602BC6-8416-42A9-A0F7-EC560DE7D843}.Release|x64.Build.0 = Release|x64
+		{3C602BC6-8416-42A9-A0F7-EC560DE7D843}.Release|x86.ActiveCfg = Release|Win32
+		{3C602BC6-8416-42A9-A0F7-EC560DE7D843}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7041E48F-1D6E-489F-9945-DFE5BDD621C1}
+	EndGlobalSection
+EndGlobal
