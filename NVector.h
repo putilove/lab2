@@ -33,3 +33,4 @@ NVector operator/(NVector lhs, const float& num);
 float operator*(const NVector& lhs,const NVector& rhs);
 std::ostream& operator<< (std::ostream& out, const NVector& v);
 void Print(const NVector& v);
+double input_control();

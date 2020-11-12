@@ -232,4 +232,45 @@ void Print(const NVector& v) {
 	std::cout << std::endl;
 }
 
+double input_control()
+{
+	unsigned int num = 0;
+	char input_num[10] = { '\0' };
+	const char check[] = "1234567890";
+	bool flag_input = true;
+	bool flag_end = false;
+	int count_minus = 0;
+	do {
+		fgets(input_num, 10, stdin);
+		rewind(stdin);
+		if (!flag_input) input_num[strlen(input_num) - 1] = '\0';
+		
+		for (unsigned i = 0; i < strlen(input_num) - 1; i++)
+		{	
+			flag_input = true;
+			if (input_num[i] == '\n')
+				input_num[i] = '\0';
+			if (input_num[i] == '-')
+			{
+				count_minus++;
+				if (count_minus > 0) { flag_input = false; break; }
+			}
+			if (!strrchr(check, input_num[i])) {
+				flag_input = false;
+				break;
+			}
 
+		}
+		num = atoi(input_num);
+		if (flag_input == false || num>10 || num<0)
+		{
+			std::cout << "\tInCorrect input, try again" << std::endl;
+			std::cout << "\tPlease, Repeat input. Enter correct element " << std::endl;
+			fflush(stdin);
+			input_num[0] = { '\0' };
+		}
+		else flag_end = true;
+	} while (!flag_end);
+	
+	return num;
+}
