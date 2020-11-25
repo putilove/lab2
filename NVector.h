@@ -9,11 +9,11 @@ public:
 	NVector(size_t size) noexcept;									// Конструктор по-умолчанию
 	NVector(const NVector& rhs) noexcept;							// Конструктор копирования
 	NVector(NVector&& rhs) noexcept;								// Конструктор перемещения
-	size_t GetSize() const noexcept;								// Получить размер
-	float GetNorm() const noexcept;									// Получить норму(высчитывает)
-	NVector Normalize() noexcept;									// Нормировать вектор
-	float GetEuclideanDistance(const NVector& rhs) const noexcept;	// Получить Евклидово расстояние(высчитывает)
-	float GetChebishevDistance(const NVector& rhs) const noexcept;	// Получить Чебышево расстояние(высчитывает)
+	size_t GetSize() const;											// Получить размер
+	float GetNorm() const ;											// Получить норму(высчитывает)
+	NVector Normalize() ;											// Нормировать вектор
+	float GetEuclideanDistance(const NVector& rhs) const;			// Получить Евклидово расстояние(высчитывает)
+	float GetChebishevDistance(const NVector& rhs) const;			// Получить Чебышево расстояние(высчитывает)
 	NVector& operator=(const NVector& rhs);							// Оператор присваивания копированием
 	NVector& operator=(NVector&& rhs) noexcept;						// Оператор присваивания перемещением
 	NVector& operator+=(const NVector& rhs);						// Унарное сложение векторов
@@ -25,7 +25,7 @@ public:
 	bool operator==(const NVector& rhs);
 	bool operator!=(const NVector& rhs);
 	
-	~NVector();
+	~NVector();														//Деструкторрр
 };
 
 NVector& FillVector(NVector& v) noexcept;

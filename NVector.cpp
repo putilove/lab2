@@ -98,11 +98,11 @@ bool NVector::operator!=(const NVector& rhs)
 }
 
 
-size_t NVector::GetSize() const noexcept{
+size_t NVector::GetSize() const {
 	return _size;
 }
 
-float NVector::GetNorm() const noexcept {
+float NVector::GetNorm() const {
 	if (_isNormCacheValid) _normCache = 0;
 	for (size_t i = 0; i < _size; ++i)
 		_normCache += _data[i] * _data[i];
@@ -111,7 +111,7 @@ float NVector::GetNorm() const noexcept {
 	return _normCache;
 }
 
-NVector NVector::Normalize() noexcept  {
+NVector NVector::Normalize() {
 	auto norm = GetNorm();
 	for (size_t i = 0; i < _size; ++i) {
 		_data[i] /= norm;
@@ -120,7 +120,7 @@ NVector NVector::Normalize() noexcept  {
 	return *this;
 }
 
-float NVector::GetEuclideanDistance(const NVector& rhs) const noexcept {
+float NVector::GetEuclideanDistance(const NVector& rhs) const {
 	float distance=0;
 	size_t biggest_size = 0;
 	if (_size == rhs._size)
@@ -138,13 +138,13 @@ float NVector::GetEuclideanDistance(const NVector& rhs) const noexcept {
 		if (i >= _size)
 			distance += (0 - rhs[i]) * (0.0f - rhs[i]);
 		else if (i >= rhs._size)
-			distance += (_data[i] - 0) * (_data[i] - 0.0f);
+			distance += (_data[i] - 0.0f) * (_data[i] - 0.0f);
 
 	}
 	return sqrt(distance);
 }
 
-float NVector::GetChebishevDistance(const NVector& rhs) const noexcept {
+float NVector::GetChebishevDistance(const NVector& rhs) const {
 	float distance = 0;
 	size_t biggest_size = 0;
 	if (_size == rhs._size)
@@ -175,6 +175,7 @@ float NVector::GetChebishevDistance(const NVector& rhs) const noexcept {
 
 // Деструктор
 NVector::~NVector() {
+	//std::cout << "DTOR" << std::endl;
 	delete[] _data;
 }
 
@@ -287,7 +288,7 @@ double input_control()
 		if (flag_input == false || num > 10 || num <= 0)
 		{
 			std::cout << "\tInCorrect input, try again" << std::endl;
-			std::cout << "\tPlease, Repeat input. Enter correct element " << std::endl;
+			std::cout << "\tPlease, Repeat input. Enter correct size[1;10] " << std::endl;
 			fflush(stdin);
 			input_num[0] = { '\0' };
 		}

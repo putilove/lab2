@@ -19,6 +19,7 @@ int main() {
 		//NVector b(5);
 		FillVector(b);
 		cout << "Second " << b;
+		cout<< "--------" << a.GetEuclideanDistance(b)<< "--------"<<endl;
 		if (a == b) cout << "a==b" << endl;
 		else cout << "a!=b" << endl;
 		cout << "----------------------------------------------------------" << endl;
