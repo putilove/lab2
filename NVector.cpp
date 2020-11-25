@@ -78,6 +78,25 @@ float NVector::operator[](size_t index) const {
 	return _data[index];
 }
 
+bool NVector::operator==(const NVector& rhs)
+{
+	if (_size != rhs._size) {
+		throw std::logic_error("Vectors must have the same size!");
+	}
+	size_t count = 0;
+	for (size_t i = 0; i < _size; ++i) {
+		if (_data[i] == rhs[i]) count++;
+	}
+	if (count == _size)
+		return true;
+	else return false;
+}
+
+bool NVector::operator!=(const NVector& rhs)
+{
+	return !(*this==rhs);
+}
+
 
 size_t NVector::GetSize() const noexcept{
 	return _size;
@@ -243,9 +262,12 @@ double input_control()
 	do {
 		fgets(input_num, 10, stdin);
 		rewind(stdin);
+		/*if (input_num[0] == '\n') {
+			input_num[0] = 0;
+			flag_input = false;
+		}*/
 		if (!flag_input) input_num[strlen(input_num) - 1] = '\0';
-		
-		for (unsigned i = 0; i < strlen(input_num) - 1; i++)
+		for (unsigned i = 0; i < strlen(input_num); ++i)
 		{	
 			flag_input = true;
 			if (input_num[i] == '\n')
@@ -261,15 +283,18 @@ double input_control()
 			}
 
 		}
-		num = atoi(input_num);
-		if (flag_input == false || num>10 || num<0)
+		if (input_num != '\0') num = atoi(input_num);
+		if (flag_input == false || num > 10 || num <= 0)
 		{
 			std::cout << "\tInCorrect input, try again" << std::endl;
 			std::cout << "\tPlease, Repeat input. Enter correct element " << std::endl;
 			fflush(stdin);
 			input_num[0] = { '\0' };
 		}
-		else flag_end = true;
+		else
+		{
+			flag_end = true;
+		}
 	} while (!flag_end);
 	
 	return num;

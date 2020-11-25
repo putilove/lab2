@@ -22,6 +22,8 @@ public:
 	void Swap(NVector& rhs) noexcept;								// Кастомный свап
 	float& operator[](size_t index);								// Доступ по индексу с возможностью редактирования
 	float operator[](size_t index) const;							// Доступ по индексу (просмотр)
+	bool operator==(const NVector& rhs);
+	bool operator!=(const NVector& rhs);
 	
 	~NVector();
 };
