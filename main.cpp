@@ -6,20 +6,22 @@ int main() {
 		float scalar = 0;
 		size_t size = 0;
 		cout << "Input size first vector: ";
-		size = input_control();
+		size = InputControl();
 		NVector a(size);
 		//NVector a(5);
 		FillVector(a);
 		cout << "First " << a;
 		cout << "Input size second vector: ";
-		size = input_control();
+		size = InputControl();
 		NVector b(size);
 		//cout << "Input scalar: ";
 		//cin >> scalar;
 		//NVector b(5);
 		FillVector(b);
 		cout << "Second " << b;
-		cout<< "--------" << a.GetEuclideanDistance(b)<< "--------"<<endl;
+		cout<< "Euclide distance: " << a.GetEuclideanDistance(b)<< "--------"<<endl;
+		cout << "Chebishev distance: " << a.GetChebishevDistance(b) << "--------" << endl;
+		cout << "Norm of first Vector: " << a.GetNorm();
 		if (a == b) cout << "a==b" << endl;
 		else cout << "a!=b" << endl;
 		cout << "----------------------------------------------------------" << endl;
@@ -68,7 +70,7 @@ int main() {
 		cout << "----------------------------------------------------------" << endl;
 		cout << a[0] << endl;
 		cout << "a[3] = 51.2" << endl;
-		a[0] = 51.2;
+		a[0] = 51.2f;
 		cout << a[0] << endl;
 	}
 	catch (logic_error &error) {

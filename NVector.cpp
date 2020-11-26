@@ -9,8 +9,8 @@ NVector::NVector (size_t size) noexcept : _data(new float[size]), _size(size) {
 	}
 }
 
-// Конструктор копирования
-NVector::NVector(const NVector& rhs) noexcept : _data(new float[rhs._size]), _size(rhs._size), _isNormCacheValid(rhs._isNormCacheValid), _normCache(rhs._normCache) {
+// Конструктор копирования (убрать noexcept)
+NVector::NVector(const NVector& rhs) : _data(new float[rhs._size]), _size(rhs._size), _isNormCacheValid(rhs._isNormCacheValid), _normCache(rhs._normCache) {
 	puts("COPY-CTOR");
 	for (size_t i = 0; i < _size; ++i) {
 		_data[i] = rhs._data[i];
@@ -27,7 +27,7 @@ NVector::NVector(NVector&& rhs) noexcept : _data(rhs._data), _size(rhs._size), _
 NVector& FillVector(NVector& v) noexcept
 {
 	srand(time(0));
-	int k = 0;
+	float k = 0;
 	for (size_t i = 0; i < v.GetSize(); ++i)
 	{
 		k = float(-1000 + rand() % 2000);
@@ -135,9 +135,9 @@ float NVector::GetEuclideanDistance(const NVector& rhs) const {
 			distance += (_data[i] - rhs[i]) * (_data[i] - rhs[i]);
 			++i;
 		}
-		if (i >= _size)
-			distance += (0 - rhs[i]) * (0.0f - rhs[i]);
-		else if (i >= rhs._size)
+		if (i < _size)
+			distance += (0.0f - rhs[i]) * (0.0f - rhs[i]);
+		else if (i < rhs._size)
 			distance += (_data[i] - 0.0f) * (_data[i] - 0.0f);
 
 	}
@@ -160,9 +160,9 @@ float NVector::GetChebishevDistance(const NVector& rhs) const {
 			arrayOfDiff[i] = fabs(_data[i] - rhs[i]);
 			++i;
 		}
-		if (i >= _size)
+		if (i < _size)
 			arrayOfDiff[i] = fabs(0.0f - rhs[i]);
-		else if (i >= rhs._size)
+		else if (i < rhs._size)
 			arrayOfDiff[i] = fabs(float(_data[i]) - 0.0f);
 	}
 	distance = arrayOfDiff[0];
@@ -252,7 +252,7 @@ void Print(const NVector& v) {
 	std::cout << std::endl;
 }
 
-double input_control()
+int InputControl()
 {
 	unsigned int num = 0;
 	char input_num[10] = { '\0' };

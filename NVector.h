@@ -7,7 +7,7 @@ class NVector {
 	mutable float _normCache = 0.0f;
 public:
 	NVector(size_t size) noexcept;									// Конструктор по-умолчанию
-	NVector(const NVector& rhs) noexcept;							// Конструктор копирования
+	NVector(const NVector& rhs);									// Конструктор копирования
 	NVector(NVector&& rhs) noexcept;								// Конструктор перемещения
 	size_t GetSize() const;											// Получить размер
 	float GetNorm() const ;											// Получить норму(высчитывает)
@@ -34,5 +34,5 @@ NVector operator*(NVector lhs, const float& num);
 NVector operator/(NVector lhs, const float& num);
 float operator*(const NVector& lhs,const NVector& rhs);
 std::ostream& operator<< (std::ostream& out, const NVector& v);
-void Print(const NVector& v);
-double input_control();
+//void Print(const NVector& v);
+int InputControl();
